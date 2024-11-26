@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task js</title>
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <h1 class="mb-4 text-center">CRUD PRODUCTS</h1>
+
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="mb-3">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input
+                    oninput="validationInputs(this, 'msgName')"
+                    type="text"
+                    id="name"
+                    class="form-control"
+                    placeholder="enter product name"
+                  />
+                  <p id="msgName" class="alert alert-danger d-none">INvalid Validation (start with letter from 3 to 20)</p>
+                  <label for="name">Product name</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    id="price"
+                    class="form-control"
+                    placeholder="enter product price"
+                    oninput="validationInputs(this, 'msgPrice')"
+                  />
+                  <p id="msgPrice" class="alert alert-danger d-none">INvalid Validation</p>
+                  <label for="price">Product Price</label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    id="category"
+                    class="form-control"
+                    placeholder="Enter the category"
+                    list="categoryList"
+                    oninput="validationInputs(this, 'msgCategory')"
+                  />
+                  <p id="msgCategory" class="alert alert-danger d-none">INvalid Validation</p>
+                  <label for="category">Product Category</label>
+                  <datalist id="categoryList">
+                    <option>TV</option>
+                    <option>Mobile</option>
+                    <option>Electronics</option>
+                  </datalist>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <textarea
+                    id="desc"
+                    class="form-control"
+                    placeholder="Enter Description"
+                    oninput="validationInputs(this, 'msgDescription')"
+                  ></textarea>
+                  <p id="msgDescription" class="alert alert-danger d-none">INvalid Validation</p>
+                  <label for="desc">Description</label>
+                </div>
+              </div>
+            </div>
+
+            <row>
+              <div class="col-md-12 mt-3">
+                <div class="form-floating">
+                  <input
+                    type="file"
+                    id="image"
+                    class="form-control"
+                    accept="image/*"
+                  />
+                  <label for="image">Product image</label>
+                </div>
+              </div>
+            </row>
+
+            <div class="mt-4">
+              <button
+                class="btn btn-primary me-2"
+                onclick="addProduct()"
+                id="btnAdd"
+              >
+                Add Product
+              </button>
+              <button
+                class="btn btn-secondary d-none"
+                id="btnUpdate"
+                onclick="updateData()"
+              >
+                Update Product <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+            </div>
+          </div>
+
+          <br /><br />
+          <hr />
+          <input
+            type="text"
+            oninput="searchData()"
+            id="search"
+            class="form-control"
+            placeholder="enter your search"
+          />
+          <hr />
+          <br /><br />
+
+          <div class="mb-3">
+            <h4>Products</h4>
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>category</th>
+                    <th>description</th>
+                    <th>image</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="items"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>
